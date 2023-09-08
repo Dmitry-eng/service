@@ -1,0 +1,39 @@
+service-name: "service"
+
+sha:
+  key: 123
+
+jwt:
+  secret:
+    access: 123
+    refresh: 123
+
+spring:
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    username: postgres
+    password: 1
+    url : jdbc:postgresql://localhost:5433/customers
+  jpa:
+    hibernate:
+      ddl-auto: create
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgresPlusDialect
+    open-in-view: true
+
+
+expiration-time:
+  refresh:
+    day: 1
+    hour: 1
+    minute: 1
+    second: 1
+  access:
+    day: 1
+    hour: 1
+    minute: 1
+    second: 1
+
+test-endpoint:
+  enabled: false
