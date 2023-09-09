@@ -5,8 +5,10 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.MappedSuperclass;
 import lombok.Data;
+import lombok.experimental.FieldNameConstants;
 
 @MappedSuperclass
+@FieldNameConstants
 @Data
 public class AbstractEntity {
 

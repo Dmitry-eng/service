@@ -12,12 +12,13 @@ import java.time.LocalDateTime;
 @Entity
 public class AccountEntity extends AbstractEntity{
 
-    @Column(nullable = false)
+    @Column(nullable = false, unique = true)
     private String login;
 
     @Column(nullable = false)
     private String password;
 
+    @Column(unique = true)
     private String email;
 
     @Column(nullable = false)
