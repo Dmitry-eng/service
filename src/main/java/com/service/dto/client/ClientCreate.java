@@ -1,4 +1,4 @@
-package com.service.dto.account;
+package com.service.dto.client;
 
 import jakarta.validation.constraints.AssertFalse;
 import jakarta.validation.constraints.NotBlank;

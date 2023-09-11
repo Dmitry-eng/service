@@ -1,4 +1,4 @@
-package com.service.dto.account;
+package com.service.dto.repair;
 
 import com.service.other.marker.RepairUpdatePrice;
 import com.service.other.marker.RepairUpdateStatus;

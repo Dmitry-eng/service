@@ -1,6 +1,6 @@
 package com.service.other.criteria;
 
-import com.service.dto.account.RepairStatus;
+import com.service.dto.repair.RepairStatus;
 import com.service.entity.AbstractEntity;
 import com.service.entity.RepairEntity;
 import jakarta.persistence.criteria.Predicate;

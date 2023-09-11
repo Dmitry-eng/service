@@ -1,6 +1,7 @@
-package com.service.dto.account;
+package com.service.dto.comment;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.service.dto.account.AccountInfo;
 import lombok.Data;
 
 import java.time.LocalDateTime;

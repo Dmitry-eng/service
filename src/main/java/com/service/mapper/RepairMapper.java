@@ -1,9 +1,9 @@
 package com.service.mapper;
 
-import com.service.dto.account.FullInfoRepair;
-import com.service.dto.account.RepairCreate;
-import com.service.dto.account.RepairStatus;
-import com.service.dto.account.ShortInfoRepair;
+import com.service.dto.repair.FullInfoRepair;
+import com.service.dto.repair.RepairCreate;
+import com.service.dto.repair.RepairStatus;
+import com.service.dto.repair.ShortInfoRepair;
 import com.service.entity.RepairEntity;
 import org.mapstruct.AfterMapping;
 import org.mapstruct.Mapper;

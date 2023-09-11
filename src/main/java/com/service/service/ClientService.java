@@ -1,8 +1,8 @@
 package com.service.service;
 
-import com.service.dto.account.Client;
-import com.service.dto.account.ClientCreate;
-import com.service.dto.account.ClientUpdate;
+import com.service.dto.client.Client;
+import com.service.dto.client.ClientCreate;
+import com.service.dto.client.ClientUpdate;
 
 import java.util.List;
 

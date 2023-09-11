@@ -1,7 +1,7 @@
 package com.service.mapper;
 
-import com.service.dto.account.Client;
-import com.service.dto.account.ClientCreate;
+import com.service.dto.client.Client;
+import com.service.dto.client.ClientCreate;
 import com.service.entity.ClientEntity;
 import org.mapstruct.AfterMapping;
 import org.mapstruct.Mapper;

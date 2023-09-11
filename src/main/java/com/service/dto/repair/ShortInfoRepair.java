@@ -1,4 +1,4 @@
-package com.service.dto.account;
+package com.service.dto.repair;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;

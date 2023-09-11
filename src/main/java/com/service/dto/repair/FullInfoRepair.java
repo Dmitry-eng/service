@@ -1,6 +1,9 @@
-package com.service.dto.account;
+package com.service.dto.repair;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.service.dto.account.AccountInfo;
+import com.service.dto.client.Client;
+import com.service.dto.comment.Comment;
 import lombok.Data;
 
 import java.math.BigDecimal;

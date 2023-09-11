@@ -1,7 +1,7 @@
 package com.service.mapper;
 
-import com.service.dto.account.Comment;
-import com.service.dto.account.CommentCreate;
+import com.service.dto.comment.Comment;
+import com.service.dto.comment.CommentCreate;
 import com.service.entity.CommentEntity;
 import com.service.entity.RepairEntity;
 import org.mapstruct.Mapper;

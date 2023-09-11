@@ -1,11 +1,11 @@
 package com.service.service.impl;
 
-import com.service.dto.account.CommentCreate;
-import com.service.dto.account.FullInfoRepair;
-import com.service.dto.account.RepairCreate;
-import com.service.dto.account.RepairStatus;
-import com.service.dto.account.RepairUpdate;
-import com.service.dto.account.ShortInfoRepair;
+import com.service.dto.comment.CommentCreate;
+import com.service.dto.repair.FullInfoRepair;
+import com.service.dto.repair.RepairCreate;
+import com.service.dto.repair.RepairStatus;
+import com.service.dto.repair.RepairUpdate;
+import com.service.dto.repair.ShortInfoRepair;
 import com.service.entity.AccountEntity;
 import com.service.entity.CommentEntity;
 import com.service.entity.RepairEntity;

@@ -1,6 +1,6 @@
 package com.service.entity;
 
-import com.service.dto.account.RepairStatus;
+import com.service.dto.repair.RepairStatus;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
