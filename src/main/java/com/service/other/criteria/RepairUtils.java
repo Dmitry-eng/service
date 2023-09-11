@@ -23,12 +23,6 @@ public class RepairUtils {
                 predicate.in(cb.equal(repair.get(AbstractEntity.Fields.id), value));
             }
 
-            RepairStatus repairStatus = RepairStatus.of(value);
-
-            if(Objects.nonNull(repairStatus)) {
-                predicate.in(cb.like(repair.get(RepairEntity.Fields.status), repairStatus.name()));
-            }
-
             return predicate;
         };
     }
