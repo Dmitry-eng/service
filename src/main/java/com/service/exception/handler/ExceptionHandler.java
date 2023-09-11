@@ -2,6 +2,7 @@ package com.service.exception.handler;
 
 import com.jwt.server.exception.SecurityException;
 import com.service.exception.ErrorResponse;
+import com.service.exception.ServiceException;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.MethodArgumentNotValidException;
@@ -27,6 +28,13 @@ public class ExceptionHandler {
     @ResponseStatus(HttpStatus.FORBIDDEN)
     @ResponseBody
     public ErrorResponse securityException(SecurityException ex) {
+        return buildResponse(ex.getMessage());
+    }
+
+    @org.springframework.web.bind.annotation.ExceptionHandler(ServiceException.class)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    @ResponseBody
+    public ErrorResponse serviceException(ServiceException ex) {
         return buildResponse(ex.getMessage());
     }
 

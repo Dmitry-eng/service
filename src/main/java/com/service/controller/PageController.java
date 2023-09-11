@@ -11,4 +11,29 @@ public class PageController {
         return "index";
     }
 
+    @GetMapping("/page/repair/{repairId}")
+    public String repair(){
+        return "repair";
+    }
+
+    @GetMapping("/repair/create")
+    public String createRepair(){
+        return "new-repair";
+    }
+
+    @GetMapping("/clients")
+    public String clients(){
+        return "clients";
+    }
+
+    @GetMapping("/client/create")
+    public String createClient(){
+        return "new-client";
+    }
+
+    @GetMapping("/page/client/{clientId}")
+    public String clientInfo(){
+        return "client-info";
+    }
+
 }

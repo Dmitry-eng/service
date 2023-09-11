@@ -1,5 +1,6 @@
 package com.service.mapper;
 
+import com.service.dto.account.FullInfoRepair;
 import com.service.dto.account.RepairCreate;
 import com.service.dto.account.RepairStatus;
 import com.service.dto.account.ShortInfoRepair;
@@ -11,17 +12,23 @@ import org.mapstruct.MappingTarget;
 
 import java.time.LocalDateTime;
 
-@Mapper
+@Mapper(uses = CommentMapper.class)
 public abstract class RepairMapper {
 
+    @Mapping(target = "phoneNumber", source = "repairCreate.contactPhoneNumber")
     public abstract RepairEntity map(RepairCreate repairCreate);
 
     @Mapping(target = "executor", source = "repairEntity.executor.name")
     public abstract ShortInfoRepair map(RepairEntity repairEntity);
 
+    @Mapping(target = "contactPhoneNumber", source = "repairEntity.phoneNumber")
+    @Mapping(target = "comments", source = "comments")
+    public abstract FullInfoRepair mapToFullInfoRepair(RepairEntity repairEntity);
+
     @AfterMapping
     protected void afterMapping(@MappingTarget RepairEntity entity, RepairCreate repairCreate) {
         entity.setDateCreated(LocalDateTime.now());
-        entity.setStatus(RepairStatus.NEW.name());
+        entity.setStatus(RepairStatus.NEW);
     }
+
 }

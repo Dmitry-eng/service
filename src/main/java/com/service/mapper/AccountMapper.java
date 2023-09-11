@@ -2,6 +2,7 @@ package com.service.mapper;
 
 import com.jwt.server.dto.authorization.Account;
 import com.service.dto.account.AccountCreate;
+import com.service.dto.account.AccountInfo;
 import com.service.entity.AccountEntity;
 import org.mapstruct.AfterMapping;
 import org.mapstruct.Mapper;
@@ -22,6 +23,8 @@ public abstract class AccountMapper {
     public abstract AccountEntity map(AccountCreate accountCreate);
 
     public abstract Account map(AccountEntity entity);
+
+    public abstract AccountInfo mapAccountInfo(AccountEntity value);
 
     @AfterMapping
     public void afterMapping(@MappingTarget AccountEntity accountEntity, AccountCreate accountCreate) {

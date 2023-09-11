@@ -1,0 +1,343 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Ремонт</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+    <script type="text/javascript" th:src="@{/js/repair.js}"></script>
+    <script type="text/javascript" th:src="@{/js/utils.js}"></script>
+    <script type="text/javascript" th:src="@{/js/logout.js}"></script>
+
+    <style>
+        #wrapper {
+    overflow: auto;
+    width: 100%;
+    border: 1px solid red;
+    padding: 1px;
+}
+.left {
+    display: inline-block;
+    float: left;
+    width: 80%;
+    border: 1px solid grey;
+    text-align: center;
+    box-sizing: border-box;
+}
+.right {
+    display: inline-block;
+    width: 20%;
+    border: 1px solid grey;
+    box-sizing: border-box;
+}
+        .message-item {
+ margin-bottom: 25px;
+ margin-left: 40px;
+ position: relative;
+ }
+
+ .message-item .message-inner {
+ background: #fff;
+ border: 1px solid #ddd;
+ border-radius: 3px;
+ padding: 10px;
+ position: relative;
+ }
+
+ .message-item .message-inner:before {
+ border-right: 10px solid #ddd;
+ border-style: solid;
+ border-width: 10px;
+ color: rgba(0, 0, 0, 0);
+ content: "";
+ display: block;
+ height: 0;
+ position: absolute;
+ left: -20px;
+ top: 6px;
+ width: 0;
+ }
+
+ .message-item .message-inner:after {
+ border-right: 10px solid #fff;
+ border-style: solid;
+ border-width: 10px;
+ color: rgba(0, 0, 0, 0);
+ content: "";
+ display: block;
+ height: 0;
+ position: absolute;
+ left: -18px;
+ top: 6px;
+ width: 0;
+ }
+
+ .message-item:before {
+ background: #fff;
+ border-radius: 2px;
+ bottom: -30px;
+ box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
+ content: "";
+ height: 100%;
+ left: -30px;
+ position: absolute;
+ width: 3px;
+ }
+
+ .message-item:after {
+ background: #fff;
+ border: 2px solid #ccc;
+ border-radius: 50%;
+ box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+ content: "";
+ height: 15px;
+ left: -36px;
+ position: absolute;
+ top: 10px;
+ width: 15px;
+ }
+
+
+ .message-item .message-head {
+ border-bottom: 1px solid #eee;
+ margin-bottom: 8px;
+ padding-bottom: 8px;
+ }
+
+ .message-item .message-head .avatar {
+ margin-right: 20px;
+ }
+
+ .message-item .message-head .user-detail {
+ overflow: hidden;
+ }
+
+ .message-item .message-head .user-detail h5 {
+ font-size: 16px;
+ font-weight: bold;
+ margin: 0;
+ }
+
+ .message-item .message-head .post-meta {
+ float: left;
+ padding: 0 15px 0 0;
+ }
+
+ .message-item .message-head .post-meta >div {
+ color: #333;
+ font-weight: bold;
+ text-align: right;
+ }
+
+ .post-meta > div {
+ color: #777;
+ font-size: 12px;
+ line-height: 22px;
+ }
+
+ .message-item .message-head .post-meta >div {
+ color: #333;
+ font-weight: bold;
+ text-align: right;
+ }
+
+ .post-meta > div {
+ color: #777;
+ font-size: 12px;
+ line-height: 22px;
+ }
+
+ img {
+ min-height: 40px;
+ max-height: 40px;
+ }
+
+
+    </style>
+</head>
+<body>
+
+<nav class="navbar navbar-light bg-light">
+    <form class="form-inline">
+        <button type="button" onclick="window.location.href='/'" class="btn btn-outline-success">Заявки</button>
+        <button type="button" onclick="openFormCreateRepair()" class="btn btn-outline-success">Отправить заявку на ремонт</button>
+        <button type="button" onclick="window.location.href='/clients'"  class="btn btn-outline-success">Клиенты</button>
+        <button type="button" onclick="openFormCreateClient()"  class="btn btn-outline-success">Добавить клиента</button>
+    </form>
+    <div class="d-flex ml-2">
+            <input class="btn btn-danger" onclick="exit()" type="submit" value="Выход"/>
+    </div>
+</nav>
+
+
+
+
+<nav class="navbar left" >
+    <form id="formNewRepair">
+        <div class="form-group">
+            <label for="shortDescription">Описание проблемы</label>
+            <input type="text" class="form-control" disabled id="shortDescription">
+        </div>
+        <div class="form-group">
+            <label for="fullDescription">Фактическая неисправность</label>
+            <textarea class="form-control" id="fullDescription"> </textarea>
+            <input type="button" id="buttonFullDescription"  class="btn btn-outline-success form-control" value="Сохранить"/>
+        </div>
+        <div class="form-group" style="line-height: 20px;">
+            <label for="clientName">Клиент</label>
+            <input type="text" disabled class="form-control" id = "clientName">
+            <input type="button" id="buttonClientInfo" onclick="openClientInfo()"  class="btn btn-outline-success form-control" value="Открыть карточку клиента"/>
+        </div>
+        <div class="form-group">
+            <label for="address">Адрес</label>
+            <input type="text" disabled class="form-control" id="address">
+        </div>
+        <div class="form-group">
+            <label for="contactPhoneNumber">Контактный номер телефона</label>
+            <input type="text" disabled class="form-control" id="contactPhoneNumber">
+        </div>
+        <div class="form-group">
+            <label for="email">Почта</label>
+            <input type="text"  disabled class="form-control" id="email">
+        </div>
+
+
+       <div id="comments">
+           <div class="message-item">
+               <div class="message-inner">
+                   <div class="message-head clearfix asker-meta">
+                       <div class="user-detail">
+                           <div class="post-meta">
+                               <div class="asker-meta">
+                                   <span class="qa-message-what"></span>
+                                   <span class="qa-message-when">
+ <span class="qa-message-when-data">Nov 24, 2013</span>
+ </span>
+                                   <span class="qa-message-who">
+ <span class="qa-message-who-pad">by </span>
+ <span class="qa-message-who-data"><a href="#">Gopal K Verma</a></span>
+ </span>
+                               </div>
+                           </div>
+                       </div>
+                   </div>
+                   <div class="qa-message-content">
+                       Gopal is an MCA from GJU (Hisar) and a Cisco Certified Network Professional. He has more than 11 years of experience in core data networking and telecommunications. He develops contents for Computer Science related subjects. He is also involved in developing Apps for various Mobile devices.
+                   </div>
+               </div>
+           </div>
+           <div class="message-item">
+               <div class="message-inner">
+                   <div class="message-head clearfix asker-meta">
+                       <div class="user-detail">
+                           <div class="post-meta">
+                               <div class="asker-meta">
+                                   <span class="qa-message-what"></span>
+                                   <span class="qa-message-when">
+ <span class="qa-message-when-data">Nov 24, 2013</span>
+ </span>
+                                   <span class="qa-message-who">
+ <span class="qa-message-who-pad">by </span>
+ <span class="qa-message-who-data"><a href="#">Gopal K Verma</a></span>
+ </span>
+                               </div>
+                           </div>
+                       </div>
+                   </div>
+                   <div class="qa-message-content">
+                       Gopal is an MCA from GJU (Hisar) and a Cisco Certified Network Professional. He has more than 11 years of experience in core data networking and telecommunications. He develops contents for Computer Science related subjects. He is also involved in developing Apps for various Mobile devices.
+                   </div>
+               </div>
+           </div>
+           <div class="message-item">
+               <div class="message-inner">
+                   <div class="message-head clearfix asker-meta">
+                       <div class="user-detail">
+                           <div class="post-meta">
+                               <div class="asker-meta">
+                                   <span class="qa-message-what"></span>
+                                   <span class="qa-message-when">
+ <span class="qa-message-when-data">Nov 24, 2013</span>
+ </span>
+                                   <span class="qa-message-who">
+ <span class="qa-message-who-pad">by </span>
+ <span class="qa-message-who-data"><a href="#">Gopal K Verma</a></span>
+ </span>
+                               </div>
+                           </div>
+                       </div>
+                   </div>
+                   <div class="qa-message-content">
+                       Gopal is an MCA from GJU (Hisar) and a Cisco Certified Network Professional. He has more than 11 years of experience in core data networking and telecommunications. He develops contents for Computer Science related subjects. He is also involved in developing Apps for various Mobile devices.
+                   </div>
+               </div>
+           </div>
+       </div>
+        <label for="comment">Комментарий</label>
+        <textarea class="form-control" id="comment"> </textarea>
+        <input type="button"  style="float: right; box-sizing: border-box; display: inline-block; border: 1px solid grey" onclick="addComment()" class="btn btn-outline-success form-control" value="Отправить"/>
+
+
+
+    </form>
+</nav>
+
+
+
+
+
+<nav class="navbar right" >
+    <form id="addClient">
+        <div class="form-row">
+            <div class="form-group">
+                <label for="agreementId">Номер договора</label>
+                <input type="text" class="form-control" id="agreementId" disabled>
+            </div>
+            <div class="form-group">
+                <label for="dateCreated">Дата обращения</label>
+                <input type="datetime-local" class="form-control" id="dateCreated" disabled>
+            </div>
+            <div class="form-group" style="width: 100%">
+                <label for="status">Статус</label>
+                <select class="form-control" style="width: 80%" id="status" onchange="updateStatus()" required>
+                    <option>Новый</option>
+                    <option>Диагностика</option>
+                    <option>Оценка стоимости ремонта</option>
+                    <option>Согласование стоимости ремонта</option>
+                    <option>В процессе ремонта</option>
+                    <option>Пауза</option>
+                    <option>Завершен</option>
+                    <option>Отклонен</option>
+                </select>
+
+            </div>
+            <div class="form-group" style="width: 100%">
+                <label for="executor">Исполнитель</label>
+                <select class="form-control" style="width: 80%" id="executor" onchange="updateExecutor()" required>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="price">Стоимость работ</label>
+                <input type="text" class="form-control" id="price" onchange="updatePrice()" placeholder="Стоимость работ">
+            </div>
+            <div class="form-group">
+                <label for="completionDate">Дата завершения работ</label>
+                <input type="datetime-local" class="form-control" id="completionDate" disabled>
+            </div>
+        </div>
+    </form>
+</nav>
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

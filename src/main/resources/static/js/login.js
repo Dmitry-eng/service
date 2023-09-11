@@ -5,7 +5,6 @@ $(document).ready(function () {
         $.ajax({
             statusCode: {
                 200: function (xhr) {
-                    window.localStorage.setItem("Authorization", xhr.type + " " + xhr.accessToken);
                document.cookie = "Authorization=" + xhr.accessToken
                window.location.href='/'
                 }

@@ -1,12 +1,12 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Ремонтные работы</title>
+    <title>Клиенты</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
-    <script type="text/javascript" th:src="@{/js/index.js}"></script>
+    <script type="text/javascript" th:src="@{/js/clients.js}"></script>
     <script type="text/javascript" th:src="@{/js/utils.js}"></script>
     <script type="text/javascript" th:src="@{/js/logout.js}"></script>
 
@@ -27,16 +27,13 @@
     </div>
 </nav>
 
+
 <table class="table table-hover">
-    Ремонт
+    Клиенты
     <thead>
     <tr>
         <th>#</th>
-        <th>Дата обращения</th>
-        <th>Описание</th>
-        <th>Исполнитель</th>
-        <th>Статус</th>
-        <th>Планируемая дата завершения работ</th>
+        <th>Имя</th>
         <th></th>
     </tr>
     </thead>
