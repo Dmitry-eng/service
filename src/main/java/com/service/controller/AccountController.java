@@ -2,14 +2,11 @@ package com.service.controller;
 
 import com.service.dto.account.AccountCreate;
 import com.service.dto.account.AccountInfo;
+import com.service.dto.account.AccountUpdate;
 import com.service.service.AccountService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -25,9 +22,14 @@ public class AccountController {
         accountService.createAccount(accountCreate);
     }
 
-    @GetMapping("/all")
-    public List<AccountInfo> findAllAccount() {
-        return accountService.findAllAccount();
+    @PutMapping
+    public void updateStatus(@RequestBody @Valid AccountUpdate accountUpdate) {
+        accountService.updateStatus(accountUpdate);
+    }
+
+    @GetMapping({"/all", "/all/{value}"})
+    public List<AccountInfo> findAllAccount(@PathVariable(required = false) String value) {
+        return accountService.findAllAccount(value);
     }
 
 }

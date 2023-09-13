@@ -36,4 +36,14 @@ public class PageController {
         return "client-info";
     }
 
+    @GetMapping("/accounts")
+    public String accounts(){
+        return "accounts";
+    }
+
+    @GetMapping("/account/create")
+    public String createAccount(){
+        return "new-account";
+    }
+
 }

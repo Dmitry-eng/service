@@ -4,11 +4,13 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.experimental.FieldNameConstants;
 
 import java.time.LocalDateTime;
 
 @EqualsAndHashCode(callSuper = true)
 @Data
+@FieldNameConstants
 @Entity
 public class AccountEntity extends AbstractEntity{
 
@@ -28,6 +30,6 @@ public class AccountEntity extends AbstractEntity{
     private LocalDateTime dateCreated;
 
     @Column(nullable = false)
-    private Boolean isEnabled;
+    private boolean activated;
 
 }

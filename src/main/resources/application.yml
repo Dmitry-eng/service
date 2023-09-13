@@ -1,12 +1,12 @@
 service-name: "service"
 
 sha:
-  key: 123
+  key: d66c86fc243cf2f051e48cfb12ddbefb357b618f062c9049bc48c598fcf432e0
 
 jwt:
   secret:
-    access: 123
-    refresh: 123
+    access: WO+xvwq2FDpNkMAWoJZXbXeHMcgAqO/5aNiDEBJ2aus=
+    refresh: WO+xvwq2FDpNkMAWoJZXbXeHMcgAqO/5aNiDEBJ2aus=
 
 spring:
   autoconfigure:

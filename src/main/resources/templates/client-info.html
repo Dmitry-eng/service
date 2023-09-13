@@ -35,10 +35,14 @@
 
 <nav class="navbar navbar-light bg-light">
     <form class="form-inline">
+        <input class="form-control mr-sm-2" type="text" id="list" placeholder="Search">
+        <input class="btn btn-outline-success my-2 my-sm-0" id="search" type="button" value="Поиск"/>
         <button type="button" onclick="window.location.href='/'" class="btn btn-outline-success">Заявки</button>
         <button type="button" onclick="openFormCreateRepair()" class="btn btn-outline-success">Отправить заявку на ремонт</button>
         <button type="button" onclick="window.location.href='/clients'"  class="btn btn-outline-success">Клиенты</button>
         <button type="button" onclick="openFormCreateClient()"  class="btn btn-outline-success">Добавить клиента</button>
+        <button type="button" onclick="window.location.href='/accounts'"  class="btn btn-outline-success">Пользователи</button>
+        <button type="button" onclick="openFormCreateAccount()"  class="btn btn-outline-success">Добавить пользователя</button>
     </form>
     <div class="d-flex ml-2">
             <input class="btn btn-danger" type="submit" onclick="exit()" value="Выход"/>

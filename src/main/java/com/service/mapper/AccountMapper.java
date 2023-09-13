@@ -28,7 +28,7 @@ public abstract class AccountMapper {
 
     @AfterMapping
     public void afterMapping(@MappingTarget AccountEntity accountEntity, AccountCreate accountCreate) {
-        accountEntity.setIsEnabled(true);
+        accountEntity.setActivated(true);
         accountEntity.setDateCreated(LocalDateTime.now());
 
         String password = passwordEncoder.encode(accountCreate.getPassword());

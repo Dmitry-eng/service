@@ -9,4 +9,6 @@ public class AccountInfo {
 
     private String name;
 
+    private boolean activated;
+
 }

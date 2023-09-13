@@ -24,3 +24,9 @@ function openFormCreateClient() {
     var righto = screen.availHeight/2-170;
     window.open("/client/create", "INFO", "width=450, height=400, left=" + lefto + ", top="+righto+"");
 }
+
+function openFormCreateAccount() {
+    var lefto = screen.availWidth/2-150;
+    var righto = screen.availHeight/2-170;
+    window.open("/account/create", "INFO", "width=450, height=400, left=" + lefto + ", top="+righto+"");
+}
