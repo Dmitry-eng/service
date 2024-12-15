@@ -3,7 +3,6 @@ package com.service.exception.handler;
 import com.jwt.server.exception.SecurityException;
 import com.service.exception.ErrorResponse;
 import com.service.exception.ServiceException;
-import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.MethodArgumentNotValidException;
@@ -19,7 +18,6 @@ import java.util.Objects;
 import java.util.stream.Collectors;
 
 @RestControllerAdvice
-@Slf4j
 public class ExceptionHandler {
 
     private static final String COMMA = ", ";
@@ -60,7 +58,6 @@ public class ExceptionHandler {
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ResponseBody
     public ErrorResponse defaultException(Exception ex) {
-        log.error(DEFAULT_ERROR_MESSAGE, ex);
         return buildResponse(DEFAULT_ERROR_MESSAGE);
     }
 
