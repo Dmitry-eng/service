@@ -6,6 +6,3 @@ spring:
 #  jpa:
 #    hibernate:
 #      ddl-auto: create
-
-#logging:
-#  config: /logback.xml
