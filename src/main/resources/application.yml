@@ -36,3 +36,7 @@ expiration-time:
     hour: 1
     minute: 1
     second: 1
+
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html

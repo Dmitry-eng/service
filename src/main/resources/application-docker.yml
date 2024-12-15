@@ -1,0 +1,8 @@
+spring:
+  datasource:
+    username: ${POSTGRES_USER}
+    password: ${POSTGRES_PASSWORD}
+    url : jdbc:postgresql://db-service:5432/${POSTGRES_DB}
+  jpa:
+    hibernate:
+      ddl-auto: create
